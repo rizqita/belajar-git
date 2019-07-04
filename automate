@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+mkdir "$1 at $(date)"
+cd "$1 at $(date)"
+mkdir about_me about_me/personal about_me/professional my_friends my_system_info 
+cd about_me
+touch personal/facebook.txt
+touch professional/linkedin.txt
+echo http://facebook.com/$2 >> personal/facebook.txt
+echo http://linkedin.com/in/$3/ >> professional/linkedin.txt
+cd ..
+cd my_friends
+touch list_of_my_friends.txt
+curl https://gist.githubusercontent.com/tegarimansyah/e91f335753ab2c7fb12815779677e914/raw/4588cdc062b6fd44847ad2f9bc1fe9bb547dbeca/list_of_my_friends.txt >> list_of_my_friends.txt
+cd ..
+cd my_system_info
+echo "My username : $USER " >about_my_laptop.txt
+echo "With host: $(uname -a)" >> about_my_laptop.txt
+ping -c 3 google.com> internet_connection.txt
+
